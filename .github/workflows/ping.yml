@@ -2,8 +2,11 @@ name: Ping API cada 10min
 
 on:
   schedule:
-    - cron: "*/10 * * * *"  # Corre cada 10 minutos UTC
-  workflow_dispatch:         # Permite correrlo manualmente desde Actions
+    # De 10:00 a 23:59 UTC → equivale a 7:00 a 20:59 AR
+    - cron: "*/10 10-23 * * *"
+    # De 00:00 a 00:59 UTC → equivale a 21:00 a 21:59 AR
+    - cron: "*/10 0 * * *"
+  workflow_dispatch:
 
 jobs:
   ping:
